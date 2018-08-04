@@ -30,7 +30,7 @@ std::string hasData(std::string s)
   }
   return "";
 }
-double Kp = 0.25, Ki = 0.08, Kd = 0.15;
+double Kp = 0.25, Ki = 0.01, Kd = 0.2;
 int main()
 {
   uWS::Hub h;
