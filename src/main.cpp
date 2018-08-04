@@ -30,7 +30,7 @@ std::string hasData(std::string s)
   }
   return "";
 }
-double Kp = 0.25, Ki = 0.01, Kd = 0.15;
+double Kp = 0.25, Ki = 0.08, Kd = 0.15;
 int main()
 {
   uWS::Hub h;
@@ -79,7 +79,7 @@ int main()
           }
           json msgJson;
           msgJson["steering_angle"] = steer_value;
-          msgJson["throttle"] = 0.6;
+          msgJson["throttle"] = 0.4;
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
