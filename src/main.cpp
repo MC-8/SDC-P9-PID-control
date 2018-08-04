@@ -57,13 +57,19 @@ int main()
           double speed = std::stod(j[1]["speed"].get<std::string>());
           double angle = std::stod(j[1]["steering_angle"].get<std::string>());
           double steer_value;
-          pid.UpdateError(-cte);
+          // The input to the PID controller is an error, that is the difference between the
+          // desired output of the system (that is, CTE = 0) and the current output of the system
+          // (that is the current CTE)
+          double desired_cte = 0;
+          pid.UpdateError(desired_cte - cte);
           /*
           * TODO: Calcuate steering value here, remember the steering value is
           * [-1, 1].
           * NOTE: Feel free to play around with the throttle and speed. Maybe use
           * another PID controller to control the speed!
           */
+          // As it is implemented, the total error is the output of the PID controller which directly controls
+          // the steering.
           steer_value = pid.TotalError();
 
 
